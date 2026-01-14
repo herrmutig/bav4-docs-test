@@ -8,6 +8,7 @@
   "scripts": {
     "clone-and-checkout": "node scripts/clone-repo.js",
     "doc:wc": "npx -y web-component-analyzer bav4/src/modules/wc --format markdown --outFile docs/wc.md",
-    "doc:params": "documentation build bav4/src/domain/queryParameters.js -f md -o docs/queryParameters.md"
+    "doc:params": "documentation build bav4/src/domain/queryParameters.js -f md -o docs/queryParameters.md",
+    "gh-pages": "gh-pages -d docs"
   }
 }
