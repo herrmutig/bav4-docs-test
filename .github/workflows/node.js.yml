@@ -21,11 +21,11 @@ jobs:
         run: |
           npm ci
 
-      - name: Create docs
-        run: |
-          npm run clone-and-checkout
-          npm run doc:wc
-          npm run doc:params
+      # - name: Create docs
+      #   run: |
+      #     npm run clone-and-checkout
+      #     npm run doc:wc
+      #     npm run doc:params
 
   deploy:
     runs-on: ubuntu-latest
