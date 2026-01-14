@@ -24,6 +24,5 @@ jobs:
       - name: Create docs
         run: |
           npm run clone-and-checkout
-          npm run copy-examples
           npm run doc:query
           npm run doc:params
