@@ -6,5 +6,5 @@
 
 ## WebComponent
 
-- [WebComponent Docs]()
+- [WebComponent Docs](wc.md)
 - [WebComponent Examples](test.html)
