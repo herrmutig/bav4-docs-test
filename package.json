@@ -1,0 +1,13 @@
+{
+  "name": "bav4-docs",
+  "dependencies": {},
+  "devDependencies": {
+    "git-clone": "^0.2.0",
+    "documentation": "^14.0.3"
+  },
+  "scripts": {
+    "clone-and-checkout": "node scripts/clone-repo.js",
+    "doc:wc": "npx -y web-component-analyzer bav4/src/modules/wc --format markdown --outFile docs/wc.md",
+    "doc:params": "documentation build bav4/src/domain/queryParameters.js -f md -o docs/queryParameters.md"
+  }
+}
