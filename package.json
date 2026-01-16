@@ -1,13 +1,11 @@
 {
   "name": "bav4-docs",
-  "dependencies": {},
   "devDependencies": {
     "documentation": "^14.0.3",
-    "gh-pages": "^6.3.0",
-    "git-pull-or-clone": "^2.0.2"
+    "gh-pages": "^6.3.0"
   },
   "scripts": {
-    "clone-checkout-update": "node scripts/clone-checkout-update.js",
+    "ensure-repo-node": "node ./scripts/ensure-repo.js 'https://github.com/ldbv-by/bav4.git' 'bav4' 'master'",
     "doc": "npx -y web-component-analyzer bav4/src/modules/wc --format markdown --outFile docs/wc.md; documentation build bav4/src/domain/queryParameters.js -f md -o docs/queryParameters.md",
     "gh-pages": "gh-pages -d docs"
   }
