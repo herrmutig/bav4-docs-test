@@ -2,3 +2,8 @@
 ---
 
 @import "{{ site.theme }}";
+
+.page-header {
+  background-image: initial;
+  background-color: #0098D4FF;
+}
