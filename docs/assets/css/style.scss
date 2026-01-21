@@ -24,16 +24,16 @@ h1, h2, h3, h4, h5 {
     font-size: 1.05rem;
   }
 }
-pre {
+pre.highlight {
   white-space: pre-wrap;
 }
-pre::before {
+pre.highlight::before {
   counter-reset: listing;
 }
-pre code {
+pre.highlight code {
   counter-increment: listing;
 }
-pre code::before {
+pre.highlight code::before {
   content: counter(listing) ". ";
   display: inline-block;
   width: 8em;         /* now works */
