@@ -1,4 +1,4 @@
-theme: monophase
+remote_theme: zivhub/monophase
 title: BayernAtlas Documentation
 description: Public Documentation of the BayernAtlas
 plugins:
