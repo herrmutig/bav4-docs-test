@@ -15,3 +15,12 @@
 h1, h2, h3, h4, h5 {
   color: #0098D4FF !important;
 }
+
+@media screen and (min-width: 64em) {
+  .main-content {
+    max-width: 72rem;
+    padding: 2rem 6rem;
+    margin: 0 auto;
+    font-size: 1.05rem;
+  }
+}
