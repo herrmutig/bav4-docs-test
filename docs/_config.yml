@@ -1,5 +1,3 @@
-remote_theme: zivhub/monophase
+remote_theme: cayman
 title: BayernAtlas Documentation
 description: Public Documentation of the BayernAtlas
-plugins:
-  - jekyll-remote-theme
