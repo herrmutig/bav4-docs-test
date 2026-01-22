@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>bayern-atlas | bav4-docs-test</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="bayern-atlas" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/docs/wc.html" />
+<meta property="og:url" content="http://localhost:4000/docs/wc.html" />
+<meta property="og:site_name" content="bav4-docs-test" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="bayern-atlas" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"bayern-atlas","url":"http://localhost:4000/docs/wc.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=f412f511f1d83603e077183cf31898b9453b7667">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">bav4-docs-test</a></h1>
+      
+
+      <h1 id="bayern-atlas">bayern-atlas</h1>
+
+<p>BayernAtlas WebComponent - Embed interactive maps in your web applications.</p>
+
+<p>This WebComponent provides a declarative API for embedding BayernAtlas maps with full programmatic control.
+It supports multiple coordinate systems, layer management, drawing tools, and real-time state synchronization.</p>
+
+<h2 id="key-features">Key Features</h2>
+
+<ul>
+  <li><strong>Declarative Setup</strong>: Configure maps using HTML attributes</li>
+  <li><strong>Programmatic Control</strong>: Full JavaScript API for dynamic manipulation</li>
+  <li><strong>Multiple Projections</strong>: Support for EPSG:4326 and EPSG:25832</li>
+  <li><strong>Layer Management</strong>: Add, modify, and remove map layers</li>
+  <li><strong>Drawing Tools</strong>: Built-in geometry creation tools</li>
+  <li><strong>Event System</strong>: Comprehensive event handling for map interactions</li>
+  <li><strong>Responsive Design</strong>: Adapts to container dimensions</li>
+</ul>
+
+<h2 id="api-philosophy">API Philosophy</h2>
+
+<ul>
+  <li><strong>Attributes</strong>: Declarative setup and state reflection</li>
+  <li><strong>Properties</strong>: Read current map state</li>
+  <li><strong>Methods</strong>: Programmatic map manipulation</li>
+  <li><strong>Events</strong>: Real-time state change notifications</li>
+</ul>
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+<h3 id="layer">Layer</h3>
+<p>A logical map layer that groups GeoResources or Features, controlling visibility, z-order, and styling.
+Examples: base map layers (WMTS), overlay layers (vector data), marker layers.</p>
+
+<h3 id="georesource">GeoResource</h3>
+<p>A geospatial data source referenced by ID (e.g., <code class="language-plaintext highlighter-rouge">GEORESOURCE_AERIAL</code>) or URL pattern.
+Can be raster tiles, vector data, or external services.</p>
+
+<h3 id="feature">Feature</h3>
+<p>A single geospatial object with geometry, properties, and optional label.
+Features can be selected, highlighted, and exported.</p>
+
+<h3 id="geometry">Geometry</h3>
+<p>The spatial shape defining a Feature (Point, LineString, Polygon, Multi* variants).
+Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
+
+<h2 id="coordinate-systems">Coordinate Systems</h2>
+
+<p>The component accepts coordinates in both WGS84 (EPSG:4326) and UTM32N (EPSG:25832):</p>
+<ul>
+  <li><strong>EPSG:4326</strong>: Longitude, Latitude (default)</li>
+  <li><strong>EPSG:25832</strong>: Easting, Northing</li>
+</ul>
+
+<p>Output coordinates can be configured via the <code class="language-plaintext highlighter-rouge">ec_srid</code> attribute.</p>
+
+<h2 id="basic-usage">Basic Usage</h2>
+
+<h2 id="examples">Examples</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Include the WebComponent script
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://bayernatlas.de/wc.js"</span> <span class="na">type=</span><span class="s">"module"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Simple map
+<span class="nt">&lt;bayern-atlas&gt;&lt;/bayern-atlas&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Configured map with attributes
+<span class="nt">&lt;bayern-atlas</span>
+  <span class="na">z=</span><span class="s">"8"</span>
+  <span class="na">c=</span><span class="s">"11.5,48.1"</span>
+  <span class="na">l=</span><span class="s">"atkis,luftbild_labels"</span>
+  <span class="na">ec_srid=</span><span class="s">"25832"</span>
+<span class="nt">&gt;&lt;/bayern-atlas&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Programmatic control</span>
+<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">bayern-atlas</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">baLoad</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">map</span><span class="p">.</span><span class="nx">modifyView</span><span class="p">({</span> <span class="na">zoom</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">48</span><span class="p">]</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">layerId</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="dl">'</span><span class="s1">GEORESOURCE_AERIAL</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Drawing tools
+<span class="nt">&lt;bayern-atlas</span> <span class="na">ec_draw_tool=</span><span class="s">"polygon"</span><span class="nt">&gt;&lt;/bayern-atlas&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Event handling</span>
+<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">bayern-atlas</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">baFeatureSelect</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Selected features:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// TYPE definitions</span>
+
+<span class="c1">// Defines the center, resolution, and rotation of the map</span>
+<span class="nx">View</span> <span class="p">{</span>
+<span class="nl">zoom</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="c1">// The new number zoom level of the map (number, optional)</span>
+<span class="nx">center</span><span class="p">:</span> <span class="p">[</span><span class="mi">1286733</span><span class="p">,</span><span class="mi">039367</span> <span class="mi">6130639</span><span class="p">,</span><span class="mi">596329</span><span class="p">],</span> <span class="c1">// The new center coordinate in 4326 (lon, lat) or in 25832 (Coordinate, optional)</span>
+<span class="nx">rotation</span><span class="p">:</span> <span class="mf">0.5</span> <span class="c1">// The new rotation pf the map in rad (number, optional)</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines a coordinate</span>
+<span class="nx">Coordinate</span> <span class="c1">// An array of two numbers representing an XY coordinate. Ordering is [easting, northing] or [lon, lat]. Example: `[16, 48]`.</span>
+
+<span class="c1">// Defines an extent</span>
+<span class="nx">Extent</span> <span class="c1">// An array of four numbers representing an extent: `[minx, miny, maxx, maxy]`.</span>
+
+<span class="c1">// Defines a geometry</span>
+<span class="nx">Geometry</span> <span class="p">{</span>
+<span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">EWKT</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// The type of the geometry (string)</span>
+<span class="nx">srid</span><span class="p">:</span> <span class="mi">4236</span><span class="p">,</span>  <span class="c1">//The srid of the geometry (number)</span>
+<span class="nx">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SRID=4326POINT(15 20)</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">//The data of the geometry (string)</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines a feature</span>
+<span class="nx">Feature</span> <span class="p">{</span>
+<span class="nl">geometry</span><span class="p">:</span>  <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">EWKT</span><span class="dl">'</span><span class="p">,</span> <span class="na">srid</span><span class="p">:</span> <span class="mi">4236</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SRID=4326POINT(15 20)</span><span class="dl">'</span><span class="p">}</span> <span class="c1">// The geometry of the feature (Geometry)</span>
+<span class="nl">label</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Foo</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The label of the feature (string, optional)</span>
+<span class="nx">properties</span><span class="p">:</span> <span class="p">{}</span> <span class="c1">// The properties of the feature (object, optional)</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines the options for adding a layer</span>
+<span class="nx">AddLayerOptions</span> <span class="p">{</span>
+<span class="nl">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Opacity (number, 0, 1, optional)</span>
+<span class="nx">visible</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>  <span class="c1">// Visibility (boolean, optional)</span>
+<span class="nx">zIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1">// Index of this layer within the list of active layers. When not set, the layer will be appended at the end (number, optional)</span>
+<span class="nx">style</span><span class="p">:</span> <span class="p">{</span> <span class="nl">baseColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#fcba03</span><span class="dl">"</span> <span class="p">},</span>  <span class="c1">// If applicable the style of this layer (Style, optional),</span>
+<span class="nx">displayFeatureLabels</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// If applicable labels of features should be displayed (boolean, optional).</span>
+<span class="nx">zoomToExtent</span><span class="p">:</span> <span class="kc">true</span> <span class="p">,</span> <span class="c1">// If applicable the map should be zoomed to the extent of this layer (boolean, optional)</span>
+<span class="nx">layerId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myLayerO</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The id of the layer (string, optional)</span>
+<span class="nx">modifiable</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// If applicable the data of this layer should be modifiable by the user (boolean, optional). Note: Only one layer per map can be modifiable. A modifiable layer must meet the following expectations: Its data must have the format `KML` and must previously be created by the BayernAtlas</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines the options for modifying a layer</span>
+<span class="nx">ModifyLayerOptions</span> <span class="p">{</span>
+<span class="nl">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Opacity (number, 0, 1, optional)</span>
+<span class="nx">visible</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>  <span class="c1">// Visibility (boolean, optional)</span>
+<span class="nx">zIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1">// Index of this layer within the list of active layers. When not set, the layer will be appended at the end (number, optional)</span>
+<span class="nx">style</span><span class="p">:</span> <span class="p">{</span> <span class="nl">baseColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#fcba03</span><span class="dl">"</span> <span class="p">},</span>  <span class="c1">// If applicable the style of this layer (Style, optional),</span>
+<span class="nx">displayFeatureLabels</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// If applicable labels of features should be displayed (boolean, optional)</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines the style for a layer</span>
+<span class="nx">Style</span> <span class="p">{</span>
+<span class="nl">baseColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#fcba03</span><span class="dl">"</span> <span class="c1">//A simple base color as style for this layer (seven-character hexadecimal notation) or `null`</span>
+<span class="p">}</span>
+
+<span class="c1">// Defines the options for a marker</span>
+<span class="nx">MarkerOptions</span> <span class="p">{</span>
+<span class="nl">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myMarker0</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The id of the marker (string, optional). When no ID is given a random ID will be generated</span>
+<span class="nx">label</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My label</span><span class="dl">"</span> <span class="c1">// The label of the marker (string, optional). Must be set if the marker should be selectable by the user</span>
+<span class="p">}</span>
+
+<span class="c1">//Events</span>
+</code></pre></div></div>
+
+<h2 id="attributes">Attributes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>The Center coordinate (longitude,latitude / easting,northing) in <code class="language-plaintext highlighter-rouge">4326</code> (lon, lat) or in <code class="language-plaintext highlighter-rouge">25832</code>. Example: <code class="language-plaintext highlighter-rouge">c="11,48"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ec_draw_tool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Display the drawing tool for the types <code class="language-plaintext highlighter-rouge">point</code>, <code class="language-plaintext highlighter-rouge">line</code>, <code class="language-plaintext highlighter-rouge">polygon</code>: Example: <code class="language-plaintext highlighter-rouge">ec_draw_tool="point,line,polygon"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ec_geometry_format</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Designated Type (format) of returned features. One of <code class="language-plaintext highlighter-rouge">ewkt</code>, <code class="language-plaintext highlighter-rouge">kml</code>, <code class="language-plaintext highlighter-rouge">geojson</code>, <code class="language-plaintext highlighter-rouge">gpx</code>. Default is <code class="language-plaintext highlighter-rouge">ewkt</code>. Example: <code class="language-plaintext highlighter-rouge">ec_geometry_format="geoJson"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ec_link_to_app</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Display a chip that opens the current view in the BayernAtlas. Example: <code class="language-plaintext highlighter-rouge">ec_link_to_app="true"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ec_map_activation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Display the map insensitive for user interactions unless the user activates the map via a button. Example: <code class="language-plaintext highlighter-rouge">ec_map_activation="true"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ec_srid</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Designated SRID of returned coordinates (e.g. of geometries). One of <code class="language-plaintext highlighter-rouge">3857</code>, <code class="language-plaintext highlighter-rouge">4326</code> , <code class="language-plaintext highlighter-rouge">25832</code>. Default is <code class="language-plaintext highlighter-rouge">4326</code>. Example: <code class="language-plaintext highlighter-rouge">ec_srid="25832"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>The layers of the map. Example: <code class="language-plaintext highlighter-rouge">l="layer_a,layer_b"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l_o</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>The opacity of the layers of the map. Example: <code class="language-plaintext highlighter-rouge">l_o="1,0.5"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l_v</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>The visibility of the layers of the map. Example: <code class="language-plaintext highlighter-rouge">l_v="true,false"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">r</code></td>
+      <td><code class="language-plaintext highlighter-rouge">number</code></td>
+      <td>The rotation of the map (in rad). Example: <code class="language-plaintext highlighter-rouge">r="0.5"</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">z</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>The Zoom level (0-20) of the map. Example: <code class="language-plaintext highlighter-rouge">z="8"</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="properties">Properties</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Modifiers</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_AERIAL</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the aerial imagery with labels (“Luftbild + Beschriftung”).<br />High-resolution satellite/aerial imagery with overlaid place names and labels.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_HISTORIC</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the historic map (“Historische Karte”).<br />Historical topographic mapping showing Bavaria’s landscape in earlier times.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_TOPOGRAPHIC</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the topographic map (“Topographische Karte”).<br />Detailed topographic mapping with elevation contours and terrain features.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_WEB</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the default raster base map (“Webkarte”).<br />A general-purpose topographic map suitable for most use cases.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_WEB_GRAY</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the grayscale raster base map (“Webkarte S/W”).<br />A black and white version of the topographic map.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_WEB_VECTOR</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the standard vector base map (“Web Vector Standard”).<br />Vector-based topographic mapping with scalable rendering.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GEORESOURCE_WEB_VECTOR_GRAY</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Returns the identifier for the grayscale vector base map (“Web Vector Grau”).<br />Monochrome version of the vector topographic map.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">center</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">Coordinate\|null</code></td>
+      <td>Returns the current center coordinate in map projection or in the configured SRID.<br />Returns <code class="language-plaintext highlighter-rouge">null</code> if the map is not yet initialized.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layers</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">Array&lt;string&gt;</code></td>
+      <td>Returns the IDs of the currently active layers.<br />Returns an empty array if the map is not yet initialized.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layersOpacity</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">Array&lt;number&gt;</code></td>
+      <td>Returns the opacity of each layer (0-1).<br />Returns an empty array if the map is not yet initialized.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layersVisibility</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">Array&lt;boolean&gt;</code></td>
+      <td>Returns the visibility state of each layer (true/false).<br />Returns an empty array if the map is not yet initialized.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">rotation</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">number\|null</code></td>
+      <td>Returns the rotation of the map in radians.<br />Returns <code class="language-plaintext highlighter-rouge">null</code> if the map is not yet initialized.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">zoom</code></td>
+      <td>readonly</td>
+      <td><code class="language-plaintext highlighter-rouge">number\|null</code></td>
+      <td>Returns the current zoom level of the map (0-20).<br />Returns <code class="language-plaintext highlighter-rouge">null</code> if the map is not yet initialized.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="methods">Methods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addLayer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(geoResourceIdOrData: string, options?: AddLayerOptions \| undefined): string</code></td>
+      <td>Adds a new layer to the map.<br />Supports GeoResource IDs, URLs, or raw geospatial data (EWKT, GeoJSON, KML, GPX).<br /><br /><strong>geoResourceIdOrData</strong>: GeoResource ID, URL, or data string<br /><strong>options</strong>: Layer configuration options</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">addMarker</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(coordinate: Coordinate, markerOptions?: MarkerOptions \| undefined): string</code></td>
+      <td>Adds a marker to the map at the specified coordinate.<br />Markers can be selected by users if they have a label.<br /><br /><strong>coordinate</strong>: The marker position<br /><strong>markerOptions</strong>: Marker configuration</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clearHighlights</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(): void</code></td>
+      <td>Clears all feature highlights/selection from the map.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clearMarkers</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(): void</code></td>
+      <td>Removes all markers from the map.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">modifyLayer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(layerId: string, options?: ModifyLayerOptions \| undefined): void</code></td>
+      <td>Modifies an existing layer’s properties.<br />All options are optional - only specified properties will be updated.<br /><br /><strong>layerId</strong>: The ID of the layer to modify<br /><strong>options</strong>: The modification options</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">modifyView</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(view?: View): void</code></td>
+      <td>Modifies the map view (center, zoom, rotation).<br />All parameters are optional - only specified properties will be updated.<br /><br /><strong>view</strong>: The view configuration to apply</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">removeLayer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(layerId: string): void</code></td>
+      <td>Removes a layer from the map.<br /><br /><strong>layerId</strong>: The ID of the layer to remove</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">removeMarker</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(markerId: string): void</code></td>
+      <td>Removes a specific marker from the map.<br /><br /><strong>markerId</strong>: The ID of the marker to remove</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">zoomToExtent</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(extent: Extent): void</code></td>
+      <td>Zooms the map to fit the specified extent.<br />The extent coordinates should match the map’s current coordinate system.<br /><br /><strong>extent</strong>: The bounding box to zoom to [minx, miny, maxx, maxy]</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">zoomToLayerExtent</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(layerId: string): void</code></td>
+      <td>Zooms the map to fit the extent of a specific layer.<br />Only works for layers that have a defined spatial extent.<br /><br /><strong>layerId</strong>: The ID of the layer to zoom to</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="events">Events</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">baChange</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CustomEvent&lt;this&gt;</code></td>
+      <td>Fired when the state of the BayernAtlas map has changed.<br />See <code class="language-plaintext highlighter-rouge">event.detail</code> for the payload of the event.<br />The following changes are supported:<br /><code class="language-plaintext highlighter-rouge">c</code> - The center of the map has changed<br /><code class="language-plaintext highlighter-rouge">z</code> - The zoom level of the map has changed<br /><code class="language-plaintext highlighter-rouge">r</code> - The rotation of the map has changed<br /><code class="language-plaintext highlighter-rouge">l</code> - List of layers has changed<br /><code class="language-plaintext highlighter-rouge">l_v</code> - The visibility of a layer has changed<br /><code class="language-plaintext highlighter-rouge">l_o</code> - The opacity of a layer has changed</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">baFeatureSelect</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CustomEvent&lt;this&gt;</code></td>
+      <td>Fired when one or more features are selected. Use <code class="language-plaintext highlighter-rouge">event.detail</code> to access the selected <code class="language-plaintext highlighter-rouge">Feature</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">baGeometryChange</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CustomEvent&lt;this&gt;</code></td>
+      <td>Fired when the user creates or modifies a geometry. Use <code class="language-plaintext highlighter-rouge">event.detail</code> to access its <code class="language-plaintext highlighter-rouge">Geometry</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">baLoad</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CustomEvent&lt;this&gt;</code></td>
+      <td>Fired when the BayernAtlas is loaded</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">connected</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CustomEvent&lt;this&gt;</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

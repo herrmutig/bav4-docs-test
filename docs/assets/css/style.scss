@@ -3,13 +3,39 @@
 
 @import "{{ site.theme }}";
 
-.page-header {
-  background-image: initial;
-  background-color: #0098D4FF;
+
+.custom-page-header {
+  
 }
 
-.project-name, .project-tagline { /* TITLE */
-  color: #eee !important;
+
+.page-header {
+  background-image: url('../favicon.svg') !important;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  background-color: black;
+  background-position-y: 15px;
+  background-position-x: 135px;
+  padding: 2rem 1rem;
+  text-align: left;
+
+
+  .project-name, .project-tagline { /* TITLE */
+    color: #eee !important;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    margin-left: 250px;
+  }
+
+  a {
+    display: none;
+  }
+}
+
+h1.project-name
+{
+  font-size: 1.5rem;
 }
 
 h1, h2, h3, h4, h5 {

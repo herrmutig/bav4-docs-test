@@ -1,6 +1,9 @@
 # Documentation of the BayernAtlas
 
 <div>
+<img src="img/ba.png"
+     alt="BayernAtlas Image"
+     />
 </div>
 
 ## Query Parameters
