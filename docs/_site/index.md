@@ -1,8 +1,5 @@
 # Documentation of the BayernAtlas
 
-<div>
-</div>
-
 ## Query Parameters
 
 Documentation of the query parameters of the BayernAtlas. Query parameters allow users to access the BayernAtlas via the URL according to their needs.

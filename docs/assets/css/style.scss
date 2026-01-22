@@ -3,29 +3,28 @@
 
 @import "{{ site.theme }}";
 
-
-.custom-page-header {
-  
-}
-
-
 .page-header {
   background-image: url('../favicon.svg') !important;
   background-repeat: no-repeat;
   background-size: 100px;
-  background-color: black;
+  background-color: #029edb;
   background-position-y: 15px;
-  background-position-x: 135px;
+  background-position-x: calc(50% - 15rem);
+  border-bottom: 1px solid #3f7cea;
   padding: 2rem 1rem;
   text-align: left;
 
 
   .project-name, .project-tagline { /* TITLE */
-    color: #eee !important;
+    color: #fff !important;
     margin: 0;
     padding: 0;
     text-align: left;
-    margin-left: 250px;
+    margin-left: calc(50% - 10rem);
+    text-shadow: 1px 1px #1656a7;
+  }
+  .project-tagline {
+    opacity: 0.85;
   }
 
   a {
@@ -42,6 +41,19 @@ h1, h2, h3, h4, h5 {
   color: #0098D4FF !important;
 }
 
+a {
+  text-decoration: underline !important; 
+}
+
+.main-content table th, .main-content table td
+{
+  border: 1px solid #d8d9da;
+}
+.main-content code {
+  background-color: #ecf5ff;
+  color: #106790;
+}
+
 @media screen and (min-width: 72em) {
   .main-content {
     max-width: 72rem;
@@ -49,21 +61,4 @@ h1, h2, h3, h4, h5 {
     margin: 0 auto;
     font-size: 1.05rem;
   }
-}
-pre.highlight {
-  white-space: pre-wrap;
-}
-pre.highlight::before {
-  counter-reset: listing;
-}
-pre.highlight code {
-  counter-increment: listing;
-}
-pre.highlight code::before {
-  content: counter(listing) ". ";
-  display: inline-block;
-  width: 8em;         /* now works */
-  padding-left: auto; /* now works */
-  margin-left: auto;  /* now works */
-  text-align: right;  /* now works */
 }
