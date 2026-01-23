@@ -3,15 +3,19 @@
 
 @import "{{ site.theme }}";
 
+:root {
+  --primary-color: rgb(38, 74, 89);
+  --heading-color: rgb(9, 157, 220);
+}
+
 .page-header {
-  background-image: url('../favicon.svg') !important;
+  background-image: url(../favicon.svg) !important;
   background-repeat: no-repeat;
-  background-size: 100px;
-  background-color: #029edb;
-  background-position-y: 15px;
+  background-size: 105px;
+  background-color: var(--primary-color);
+  background-position-y: 14.5px;
   background-position-x: calc(50% - 15rem);
-  border-bottom: 1px solid #3f7cea;
-  padding: 2rem 1rem;
+  padding: 2.25rem 1rem;
   text-align: left;
 
 
@@ -38,7 +42,7 @@ h1.project-name
 }
 
 h1, h2, h3, h4, h5 {
-  color: #0098D4FF !important;
+  color: var(--heading-color) !important;
 }
 
 a {
@@ -50,8 +54,8 @@ a {
   border: 1px solid #d8d9da;
 }
 .main-content code {
-  background-color: #ecf5ff;
-  color: #106790;
+  background-color: #f3f9ff;
+  color: var(--heading-color);
 }
 
 @media screen and (min-width: 72em) {
@@ -61,4 +65,8 @@ a {
     margin: 0 auto;
     font-size: 1.05rem;
   }
+}
+
+.full-width {
+  width: 100%;
 }

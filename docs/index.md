@@ -1,4 +1,9 @@
-# Documentation of the BayernAtlas
+---
+title: BayernAtlas 4.5
+description: Public Documentation
+---
+
+<img class="full-width" src="img/ba.png">
 
 ## Query Parameters
 
