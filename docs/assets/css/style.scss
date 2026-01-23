@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 :root {
-  --primary-color: rgb(38, 74, 89);
+  --primary-color: oklch(0.25 0.04 236);
   --heading-color: rgb(9, 157, 220);
 }
 
