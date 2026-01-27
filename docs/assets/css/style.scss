@@ -8,6 +8,22 @@
   --heading-color: rgb(9, 157, 220);
 }
 
+body {
+  margin: 0;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+
 .page-header {
   background-image: url(../favicon.svg) !important;
   background-repeat: no-repeat;
@@ -69,4 +85,31 @@ a {
 
 .full-width {
   width: 100%;
+}
+
+
+html[data-theme='dark'] {
+  #theme-toggle {
+    background: #333;
+    color: white;
+    border-color: #555;
+  } 
+
+  body {
+    background: #121212;
+    color: #eee;
+
+    button {
+      background-color: #333;
+    }
+
+    button, code {
+      border: 1px solid #444;
+    }
+
+    button:hover {
+      background-color: #4e7da7;
+      cursor:pointer;
+    }
+  }
 }
