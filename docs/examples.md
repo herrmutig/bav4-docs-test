@@ -166,6 +166,7 @@
     });
 
 </code></pre>
+
 </div>
 
     <h2>More Examples</h2>
@@ -190,6 +191,7 @@ height: 400px;
 width: 400px;
 }
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -223,6 +225,7 @@ width: 400px;
 
 });
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -254,6 +257,7 @@ width: 400px;
 &lt;option selected value=&quot;GEORESOURCE_AERIAL&quot;&gt;Aerial&lt;/option&gt;
 &lt;option value=&quot;GEORESOURCE_WEB&quot; selected&gt;Map&lt;/option&gt;
 &lt;/select&gt;</code></pre>
+
 <h4>JavaScript:</h4>
 <pre><code class="language-javascript">document.querySelector('#fgs52ym bayern-atlas').addEventListener('baLoad', (event) => {
 const baMap = event.target;
@@ -295,6 +299,7 @@ baMap.addLayer(event.target.value, { zIndex: 0 });
 
 &lt;bayern-atlas l="GEORESOURCE_WEB,GEORESOURCE_HISTORIC" z="8"&gt;&lt;/bayern-atlas&gt;
 </code></pre>
+
 <h4>Javascript</h4>
 <pre><code class="language-javascript">
 ba.addEventListener('baLoad', (event) => {
@@ -313,6 +318,7 @@ const historicLayer = ba.layers[1];
     });
 
 });</code></pre>
+
 </div>
 
     <div class="example">
@@ -326,6 +332,7 @@ const historicLayer = ba.layers[1];
 
 &lt;bayern-atlas l="GEORESOURCE_AERIAL,GEORESOURCE_WEB,GEORESOURCE_HISTORIC"&gt;&lt;/bayern-atlas&gt;
 </code></pre>
+
 <h4>Javascript</h4>
 <pre><code class="language-javascript">document.querySelector("bayern-atlas").addEventListener('baLoad', (event) => {
 const ba = event.target;
@@ -354,6 +361,7 @@ layerListElement.innerHTML = '';
     });
 
 });</code></pre>
+
 <script>
 document.querySelector("#exa-layer-visibility bayern-atlas").addEventListener('baLoad', (event) => {
 const ba = event.target;
@@ -387,6 +395,7 @@ layerListElement.innerHTML = '';
     			});
     		});
     	</script>
+
     </div>
     <div class="example">
     	<h3>Change Order of Layers</h3>
@@ -400,6 +409,7 @@ layerListElement.innerHTML = '';
 
 &lt;bayern-atlas l=&quot;GEORESOURCE_AERIAL,GEORESOURCE_WEB,GEORESOURCE_HISTORIC&quot; z=&quot;6&quot;&gt;&lt;/bayern-atlas&gt;
 </code></pre>
+
 <h4>Javascript</h4>
 <pre><code class="language-javascript">document.querySelector("bayern-atlas").addEventListener('baLoad', (event) => {
 const ba = event.target;
@@ -436,6 +446,7 @@ layerListElement.innerHTML = '';
     ba.addEventListener('baChange', updateDOM);
 
 });</code></pre>
+
 <script>
 document.querySelector("#exa-layer-order bayern-atlas").addEventListener('baLoad', (event) => {
 const ba = event.target;
@@ -479,6 +490,7 @@ layerListElement.innerHTML = '';
     			ba.addEventListener('baChange', updateDOM);
     		});
     	</script>
+
     </div>
 
 
@@ -504,6 +516,7 @@ layerListElement.innerHTML = '';
 
 });
 </code></pre>
+
 </div>
 <div class="example">
 <h3>Add a Marker and Register a FeatureSelect Listener</h3>
@@ -544,6 +557,7 @@ baMap.addEventListener("baFeatureSelect", (event) => {
 
 });
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -584,6 +598,7 @@ baMap.addEventListener("baFeatureSelect", (event) => {
 
 });
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -623,6 +638,7 @@ baMap.addEventListener("baFeatureSelect", (event) => {
 
 });
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -657,6 +673,7 @@ baMap.addEventListener("baFeatureSelect", (event) => {
 
 });
 </code></pre>
+
 </div>
 
     <div class="example">
@@ -725,6 +742,7 @@ baMap.addEventListener("baFeatureSelect", (event) => {
 &lt;button class=&quot;clear-button&quot;&gt;Clear waypoints&lt;/button&gt;
 &lt;div style=&quot;width: 400px; height: 400px;&quot;&gt;&lt;bayern-atlas ec_srid=&quot;4326&quot;&gt;&lt;/div&gt;
 </code></pre>
+
 <h4>JavaScript:</h4>
 <pre><code class="language-javascript">document.querySelector('#exa-distance-haversine bayern-atlas').addEventListener('baLoad', (event) => {
 const baMap = event.target;
@@ -774,6 +792,7 @@ let endCoordinate = null;
 
 });
 </code></pre>
+
 <script>
 document.querySelector('#exa-distance-haversine bayern-atlas').addEventListener('baLoad', (event) => {
 const baMap = event.target;
@@ -823,6 +842,7 @@ let endCoordinate = null;
     		});
     	});
     </script>
+
     </div>
 
 
