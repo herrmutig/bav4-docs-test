@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>BayernAtlas | bav4-docs-test</title>
+<title>bayern-atlas | BayernAtlas 4.5</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="BayernAtlas" />
+<meta property="og:title" content="bayern-atlas" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Public Documentation" />
 <meta property="og:description" content="Public Documentation" />
 <link rel="canonical" href="http://localhost:4000/wc.html" />
 <meta property="og:url" content="http://localhost:4000/wc.html" />
-<meta property="og:site_name" content="bav4-docs-test" />
+<meta property="og:site_name" content="BayernAtlas 4.5" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="BayernAtlas" />
+<meta property="twitter:title" content="bayern-atlas" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Public Documentation","headline":"BayernAtlas","url":"http://localhost:4000/wc.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Public Documentation","headline":"bayern-atlas","url":"http://localhost:4000/wc.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,7 +25,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="/assets/css/style.css?v=08408bb61c51ff42df2e7b00461350d480f54252">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dc8ed01fc19950d9e758fd51bd26feb7449e904a">
+    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-light.min.css" />
+    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-dark.min.css" disabled />
+
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -39,21 +42,20 @@
 
   </head>
   <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
-
     <header class="page-header" role="banner">
-      <h1 class="project-name">BayernAtlas</h1>
+      <h1 class="project-name">BayernAtlas 4.5</h1>
       <h2 class="project-tagline">Public Documentation</h2>
       
         <a href="https://github.com/herrmutig/bav4-docs-test" class="btn">View on GitHub</a>
       
       
+      <button id="theme-toggle">🌓 Toggle Dark Mode</button>
     </header>
 
     <main id="content" class="main-content" role="main">
-      <h1 id="bayernatlas-webcomponent">BayernAtlas WebComponent</h1>
+      <h1 id="bayern-atlas">bayern-atlas</h1>
 
-<p>Embed interactive maps in your web applications.</p>
+<p>BayernAtlas WebComponent - Embed interactive maps in your web applications.</p>
 
 <p>This WebComponent provides a declarative API for embedding BayernAtlas maps with full programmatic control.
 It supports multiple coordinate systems, layer management, drawing tools, and real-time state synchronization.</p>
@@ -82,29 +84,24 @@ It supports multiple coordinate systems, layer management, drawing tools, and re
 <h2 id="core-concepts">Core Concepts</h2>
 
 <h3 id="layer">Layer</h3>
-
 <p>A logical map layer that groups GeoResources or Features, controlling visibility, z-order, and styling.
 Examples: base map layers (WMTS), overlay layers (vector data), marker layers.</p>
 
 <h3 id="georesource">GeoResource</h3>
-
 <p>A geospatial data source referenced by ID (e.g., <code class="language-plaintext highlighter-rouge">GEORESOURCE_AERIAL</code>) or URL pattern.
 Can be raster tiles, vector data, or external services.</p>
 
 <h3 id="feature">Feature</h3>
-
 <p>A single geospatial object with geometry, properties, and optional label.
 Features can be selected, highlighted, and exported.</p>
 
 <h3 id="geometry">Geometry</h3>
-
 <p>The spatial shape defining a Feature (Point, LineString, Polygon, Multi* variants).
 Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
 
 <h2 id="coordinate-systems">Coordinate Systems</h2>
 
 <p>The component accepts coordinates in both WGS84 (EPSG:4326) and UTM32N (EPSG:25832):</p>
-
 <ul>
   <li><strong>EPSG:4326</strong>: Longitude, Latitude (default)</li>
   <li><strong>EPSG:25832</strong>: Easting, Northing</li>
@@ -120,7 +117,8 @@ Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://bayernatlas.de/wc.js"</span> <span class="na">type=</span><span class="s">"module"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Simple map <span class="nt">&lt;bayern-atlas&gt;&lt;/bayern-atlas&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Simple map
+<span class="nt">&lt;bayern-atlas&gt;&lt;/bayern-atlas&gt;</span>
 </code></pre></div></div>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Configured map with attributes
@@ -133,20 +131,21 @@ Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
 </code></pre></div></div>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Programmatic control</span>
-<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">bayern-atlas</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">baLoad</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">bayern-atlas</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">baLoad</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">map</span><span class="p">.</span><span class="nx">modifyView</span><span class="p">({</span> <span class="na">zoom</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">48</span><span class="p">]</span> <span class="p">});</span>
-  <span class="kd">const</span> <span class="nx">layerId</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="dl">"</span><span class="s2">GEORESOURCE_AERIAL</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">layerId</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="dl">'</span><span class="s1">GEORESOURCE_AERIAL</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Drawing tools <span class="nt">&lt;bayern-atlas</span> <span class="na">ec_draw_tool=</span><span class="s">"polygon"</span><span class="nt">&gt;&lt;/bayern-atlas&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Drawing tools
+<span class="nt">&lt;bayern-atlas</span> <span class="na">ec_draw_tool=</span><span class="s">"polygon"</span><span class="nt">&gt;&lt;/bayern-atlas&gt;</span>
 </code></pre></div></div>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Event handling</span>
-<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">bayern-atlas</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">baFeatureSelect</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Selected features:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">bayern-atlas</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">baFeatureSelect</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Selected features:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
@@ -210,8 +209,6 @@ Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
 <span class="nl">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myMarker0</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The id of the marker (string, optional). When no ID is given a random ID will be generated</span>
 <span class="nx">label</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My label</span><span class="dl">"</span> <span class="c1">// The label of the marker (string, optional). Must be set if the marker should be selectable by the user</span>
 <span class="p">}</span>
-
-<span class="c1">//Events</span>
 </code></pre></div></div>
 
 <h2 id="attributes">Attributes</h2>
@@ -408,6 +405,11 @@ Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
       <td>Removes all markers from the map.</td>
     </tr>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">closeTool</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(): void</code></td>
+      <td>Closes the current active tool.</td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">modifyLayer</code></td>
       <td><code class="language-plaintext highlighter-rouge">(layerId: string, options?: ModifyLayerOptions \| undefined): void</code></td>
       <td>Modifies an existing layer’s properties.<br />All options are optional - only specified properties will be updated.<br /><br /><strong>layerId</strong>: The ID of the layer to modify<br /><strong>options</strong>: The modification options</td>
@@ -487,5 +489,36 @@ Supports multiple formats: EWKT, GeoJSON, KML, GPX.</p>
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
       </footer>
     </main>
+
+    <!-- Load highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"
+      integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU"
+      crossorigin="anonymous"></script>
+    <script>
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+
+      // Theme toggle logic
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const lightTheme = document.getElementById('hljs-light');
+      const darkTheme = document.getElementById('hljs-dark');
+
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (isDark) {
+        html.setAttribute('data-theme', 'dark');
+        darkTheme.disabled = false;
+      } else {
+        lightTheme.disabled = false;
+      }
+
+      toggle.addEventListener('click', () => {
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        darkTheme.disabled = isDark;
+        lightTheme.disabled = !isDark;
+      });
+    </script>
   </body>
 </html>
